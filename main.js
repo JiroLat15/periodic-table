@@ -39,15 +39,16 @@ htmlTable.classList.add("periodic-table");
 table.forEach((row) => {
     const tr = document.createElement("tr");
 
-    row.forEach((cell) => {
+    row.forEach((cell, colIndex) => {
         const td = document.createElement("td");
 
         if (cell) {
             // If there is an element in this cell
+            td.classList.add(`group-${cell.group}`);
             td.innerHTML = `
-            <div class="atomic-number">${cell.number}</div>
-            <div class="symbol">${cell.symbol}</div>
-            <div class="element-name">${cell.name}</div>
+                <div class="atomic-number">${cell.number}</div>
+                <div class="symbol">${cell.symbol}</div>
+                <div class="element-name">${cell.name}</div>
             `;
         } 
         
@@ -57,6 +58,13 @@ table.forEach((row) => {
         }
 
         tr.appendChild(td);
+
+        // Add visual spacer after Group 3 (which is at index 2)
+        if (colIndex === 2) {
+            const gap = document.createElement("td");
+            gap.classList.add("gap-cell");
+            tr.appendChild(gap);
+        }
     });
 
     htmlTable.appendChild(tr);
@@ -69,9 +77,9 @@ function createSeriesRow(title, elementsList) {
     const wrapper = document.createElement("div");
     wrapper.classList.add("element-series-wrapper");
 
-    const label = document.createElement("div");
-    label.classList.add("element-series-label");
-    label.textContent = title;
+    // const label = document.createElement("div");
+    // label.classList.add("element-series-label");
+    // label.textContent = title;
 
     // Create table-like structure
     const table = document.createElement("table");
@@ -80,11 +88,17 @@ function createSeriesRow(title, elementsList) {
     const tr = document.createElement("tr");
 
     // Add empty cells to simulate offset (first 3 groups)
+    // NEW: Offset by 3 empty + 1 gap to align with group 4
     for (let i = 0; i < 3; i++) {
         const emptyTd = document.createElement("td");
         emptyTd.classList.add("empty");
         tr.appendChild(emptyTd);
     }
+
+    // Add the spacing between group 3 and 4
+        const gapTd = document.createElement("td");
+        gapTd.classList.add("gap-cell");
+        tr.appendChild(gapTd);
 
     // Add the 15 elements
     elementsList.forEach((el) => {
@@ -100,7 +114,7 @@ function createSeriesRow(title, elementsList) {
     });
 
     table.appendChild(tr);
-    wrapper.appendChild(label);
+    // wrapper.appendChild(label);
     wrapper.appendChild(table);
 
     return wrapper;

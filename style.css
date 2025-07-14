@@ -85,6 +85,10 @@ td {
   flex-wrap: wrap;
 }
 
+.series-table {
+  border-spacing: 6px;
+}
+
 /* Each element box in the row */
 .element-box {
   width: 60px;
@@ -116,4 +120,12 @@ td {
   font-size: 0.6em;
   font-weight: normal;
   text-align: center;
+}
+
+.gap-cell {
+  width: 30px !important;
+  min-width: 30px !important;
+  border: none;
+  background: transparent;
+  pointer-events: none;
 }
