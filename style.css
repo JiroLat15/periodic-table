@@ -1,6 +1,6 @@
 /* Targets the entire table */
 .periodic-table {
-  border-collapse: fixed; /* Allows gaps between cells */
+  border-collapse: separate; /* Allows gaps between cells */
   border-spacing: 6px;      /* Space between cells */
   width: auto; 
   margin: 20px auto;
@@ -123,9 +123,16 @@ td {
 }
 
 .gap-cell {
-  width: 30px !important;
-  min-width: 30px !important;
+  width: 20px !important;
+  min-width: 20px !important;
   border: none;
   background: transparent;
+  pointer-events: none;
+}
+
+.row-space {
+  height: 20px !important; /* or however much space you want */
+  background: transparent;
+  border: none;
   pointer-events: none;
 }
