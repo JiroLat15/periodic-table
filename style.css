@@ -1,0 +1,61 @@
+/* Targets the entire table */
+.periodic-table {
+  border-collapse: fixed; /* Allows gaps between cells */
+  border-spacing: 6px;      /* Space between cells */
+  width: auto; 
+  margin: 20px auto;
+}
+
+/* Styles all table data cells */
+td {
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 60px !important;
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  background: #f9f9f9;
+  transition: all 0.2s;
+  font-size: clamp(12px, 1.5vw, 16px);
+}
+
+/* Invisible spacer cells */
+.empty {
+  border: none;
+}
+
+.column-space {
+  border: none;
+  width: 20px !important; /* Force width */
+  min-width: 20px !important;
+}
+
+.row-space {
+  border: none;
+  height: 20px !important;
+  min-height: 20px !important;
+}
+
+.symbol {
+  font-size: 1.2em;
+}
+
+.atomic-number {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-size: 0.6em;
+  font-weight: normal;
+}
+
+.element-name {
+  position: absolute;
+  bottom: 2px;
+  width: 100%;
+  font-size: 0.6em;
+  font-weight: normal;
+  text-align: center;
+}
+
