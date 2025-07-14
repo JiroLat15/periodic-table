@@ -16,7 +16,7 @@ td {
   text-align: center;
   border: 1px solid #ccc;
   font-weight: bold;
-  background: #f9f9f9;
+  background: #ffffff;
   transition: all 0.2s;
   font-size: clamp(12px, 1.5vw, 16px);
 }
