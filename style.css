@@ -1,138 +1,68 @@
-/* Targets the entire table */
+/* ========== GENERAL TABLE STYLES ========== */
 .periodic-table {
-  border-collapse: separate; /* Allows gaps between cells */
-  border-spacing: 6px;      /* Space between cells */
-  width: auto; 
+  border-collapse: separate;  /* Allows gaps between cells */
+  border-spacing: 6px;        /* Space between cells */
   margin: 20px auto;
+  width: auto;
 }
 
-/* Styles all table data cells */
 td {
-  width: 60px !important;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: clamp(12px, 1.5vw, 16px);
+  font-weight: bold;
   height: 60px !important;
   min-width: 60px !important;
-  box-sizing: border-box;
   position: relative;
   text-align: center;
-  border: 1px solid #ccc;
-  font-weight: bold;
-  background: #ffffff;
   transition: all 0.2s;
-  font-size: clamp(12px, 1.5vw, 16px);
+  width: 60px !important;
 }
 
-/* Invisible spacer cells */
+/* ========== SPACER CELLS ========== */
 .empty {
   border: none;
 }
 
-.column-space {
-  border: none;
-  width: 20px !important;
-  min-width: 20px !important;
-}
-
 .row-space {
+  background: none;
   border: none;
   height: 20px !important;
   min-height: 20px !important;
-}
-
-/* Content inside element box layout */
-.atomic-number {
-  position: absolute;
-  top: 2px;
-  left: 4px;
-  font-size: 0.6em;
-  font-weight: normal;
-}
-
-.symbol {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.2em;
-}
-
-.element-name {
-  position: absolute;
-  bottom: 2px;
-  width: 100%;
-  font-size: 0.6em;
-  font-weight: normal;
-  text-align: center;
-}
-
-/* Wrapper around Lanthanide / Actinide sections */
-.element-series-wrapper {
-  margin: 20px auto;
-  width: fit-content;
-  text-align: left;
-}
-
-/* Label on the left (e.g. "Lanthanides") */
-.element-series-label {
-  font-weight: bold;
-  margin-bottom: 6px;
-  padding-left: 4px;
-}
-
-/* Row container that holds all the element boxes */
-.series-row {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.series-table {
-  border-spacing: 6px;
-}
-
-/* Each element box in the row */
-.element-box {
-  width: 60px;
-  height: 60px;
-  position: relative;
-  border: 1px solid #ccc;
-  background: #f1f1f1;
-  font-size: clamp(12px, 1.5vw, 16px);
-  font-weight: bold;
-}
-
-/* Reuse atomic number, symbol, and name styles */
-.element-box .atomic-number {
-  position: absolute;
-  top: 2px;
-  left: 4px;
-  font-size: 0.6em;
-  font-weight: normal;
-}
-
-.element-box .symbol {
-  font-size: 1.2em;
-}
-
-.element-box .element-name {
-  position: absolute;
-  bottom: 2px;
-  width: 100%;
-  font-size: 0.6em;
-  font-weight: normal;
-  text-align: center;
+  pointer-events: none;
 }
 
 .gap-cell {
-  width: 20px !important;
-  min-width: 20px !important;
+  background: none;
   border: none;
-  background: transparent;
+  min-width: 20px !important;
   pointer-events: none;
+  width: 20px !important;
 }
 
-.row-space {
-  height: 20px !important; /* or however much space you want */
-  background: transparent;
-  border: none;
-  pointer-events: none;
+/* ========== ELEMENT CONTENT STYLES ========== */
+.atomic-number {
+  font-size: 0.6em;
+  font-weight: normal;
+  left: 4px;
+  position: absolute;
+  top: 2px;
+}
+
+.symbol {
+  font-size: 1.2em;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.element-name {
+  bottom: 2px;
+  font-size: 0.6em;
+  font-weight: normal;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 }
