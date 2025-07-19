@@ -10,7 +10,23 @@
 
 <body>
 
-  <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+  <header class="navbar">
+
+    <div class="navbar-left">
+      <h1>JL</h1>
+    </div>
+
+    <div class="navbar-center">
+      <h1>Periodic Table</h1>
+    </div>
+
+    <div class="navbar-right">
+      <button id="theme-toggle" aria-label="Toggle-theme">
+        <img id="theme-icon" src="material-icon/dark mode.png" alt="Toggle Dark Mode" />
+      </button>
+    </div>
+
+  </header>
     
   <!-- Placeholder where the periodic table will appear -->
     <div id="table-container"></div>
@@ -18,6 +34,7 @@
     <!-- Link your JavaScript files -->
     <script src="elements.js"></script>
     <script src="main.js"></script>
+    <script src="theme.js"></script>
  
 </body>
 

@@ -1,63 +1,102 @@
 /* === THEME BASE === */
 
 /* Light Mode */
-body.light-mode { background-color: white; }
-body.light-mode .alkali-metal      { border-color: #c92a2a; }
+body.light-mode {
+  background-color: white;
+}
+body.light-mode .alkali-metal { border-color: #c92a2a; }
 body.light-mode .alkaline-earth-metal { border-color: #d9480f; }
-body.light-mode .transition-metal  { border-color: #1c7ed6; }
+body.light-mode .transition-metal { border-color: #1c7ed6; }
 body.light-mode .post-transition-metal { border-color: #5f3dc4; }
-body.light-mode .metalloid         { border-color: #087f5b; }
+body.light-mode .metalloid { border-color: #087f5b; }
 body.light-mode .reactive-nonmetal { border-color: #0ca678; }
-body.light-mode .noble-gas         { border-color: #228be6; }
-body.light-mode .lanthanide        { border-color: #1c7ed6; }
-body.light-mode .actinide          { border-color: #e64980; }
+body.light-mode .noble-gas { border-color: #228be6; }
+body.light-mode .lanthanide { border-color: #1c7ed6; }
+body.light-mode .actinide { border-color: #e64980; }
 body.light-mode .unknown-properties { border-color: #868e96; }
 
 /* Dark Mode */
-body.dark-mode { background-color: #1e293b; }
-body.dark-mode .alkali-metal      { border-color: #ffa8a8; }
+body.dark-mode {
+  background-color: #1e293b;
+}
+body.dark-mode .alkali-metal { border-color: #ffa8a8; }
 body.dark-mode .alkaline-earth-metal { border-color: #ffd8a8; }
-body.dark-mode .transition-metal  { border-color: #a5d8ff; }
+body.dark-mode .transition-metal { border-color: #a5d8ff; }
 body.dark-mode .post-transition-metal { border-color: #d0bfff; }
-body.dark-mode .metalloid         { border-color: #69db7c; }
+body.dark-mode .metalloid { border-color: #69db7c; }
 body.dark-mode .reactive-nonmetal { border-color: #b2f2bb; }
-body.dark-mode .noble-gas         { border-color: #a5d8ff; }
-body.dark-mode .lanthanide        { border-color: #d0ebff; }
-body.dark-mode .actinide          { border-color: #ffc9de; }
+body.dark-mode .noble-gas { border-color: #a5d8ff; }
+body.dark-mode .lanthanide { border-color: #d0ebff; }
+body.dark-mode .actinide { border-color: #ffc9de; }
 body.dark-mode .unknown-properties { border-color: #dee2e6; }
 
+/* NAVBAR STYLING */
+.navbar {
+  background-color: rgb(67, 67, 112);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 5px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  min-width: 100vw;
+  overflow-x: visible;
+  box-sizing: border-box;
+}
+
+.navbar-left h1,
+.navbar-center h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.navbar-right button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+#theme-icon {
+  width: 24px;
+  height: 24px;
+}
 /* === Theme Toggle Button Styling === */
 #theme-toggle {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
 }
 
 /* ========== GENERAL TABLE STYLES ========== */
 
 .periodic-table {
-  border-collapse: separate;  /* Allows gaps between cells */
-  border-spacing: 6px;        /* Space between cells */
-  margin: 20px auto;
+  border-collapse: separate; /* Allows gaps between cells */
+  border-spacing: 6px; /* Space between cells */
+  margin: 80px auto 10px;
   width: auto;
 }
 
 td {
   background: #ffffff;
-  border: 5px solid;
+  border: 3px solid;
   box-sizing: border-box;
-  font-size: clamp(12px, 1.5vw, 16px);
+  font-size: clamp(18px, 1.5vw, 20px);
   font-weight: bold;
-  height: 60px !important;
-  min-width: 60px !important;
+  height: 80px !important;
+  min-width: 80px !important;
   position: relative;
   text-align: center;
   transition: all 0.2s;
-  width: 60px !important;
+  width: 80px !important;
 }
 
 /* ========== SPACER CELLS ========== */
@@ -88,7 +127,7 @@ td {
   font-weight: normal;
   left: 4px;
   position: absolute;
-  top: 2px;
+  top: 5px;
 }
 
 .symbol {
@@ -100,7 +139,7 @@ td {
 }
 
 .element-name {
-  bottom: 2px;
+  bottom: 5px;
   font-size: 0.6em;
   font-weight: normal;
   position: absolute;
@@ -111,41 +150,41 @@ td {
 /* ========== ELEMENT CATEGORIES ========== */
 
 .alkali-metal {
-    background-color: #ff6b6b; /* softer red */
+  background-color: #ff6b6b; /* softer red */
 }
 
 .alkaline-earth-metal {
-    background-color: #ffa94d; /* warm orange */
+  background-color: #ffa94d; /* warm orange */
 }
 
 .transition-metal {
-    background-color: #4dabf7; /* soft blue */
+  background-color: #4dabf7; /* soft blue */
 }
 
 .post-transition-metal {
-    background-color: #9775fa; /* soft violet */
+  background-color: #9775fa; /* soft violet */
 }
 
 .metalloid {
-    background-color: #0ca678;  /* richer teal */
+  background-color: #0ca678; /* richer teal */
 }
 
 .reactive-nonmetal {
-    background-color: #38d9a9; /* mint green */
+  background-color: #38d9a9; /* mint green */
 }
 
 .noble-gas {
-    background-color: #4dd5d5;  /* soft aqua */
+  background-color: #4dd5d5; /* soft aqua */
 }
 
 .lanthanide {
-    background-color: #74c0fc; /* baby blue */
+  background-color: #74c0fc; /* baby blue */
 }
 
 .actinide {
-    background-color: #f783ac; /* light red-pink */
+  background-color: #f783ac; /* light red-pink */
 }
 
 .unknown-properties {
-    background-color: #ced4da; /* muted gray */
+  background-color: #ced4da; /* muted gray */
 }

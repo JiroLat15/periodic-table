@@ -97,16 +97,3 @@ for (let rowIndex = 0; rowIndex < table.length; rowIndex++) {
 tableContainer.appendChild(htmlTable);
 
 // Add this at the bottom of your main.js or inside a DOMContentLoaded event
-
-const themeToggle = document.getElementById("theme-toggle");
-const body = document.body;
-
-// Default theme
-body.classList.add("light-mode");
-themeToggle.textContent = "🌙";
-
-themeToggle.addEventListener("click", () => {
-    const isDark = body.classList.toggle("dark-mode");
-    body.classList.toggle("light-mode", !isDark);
-    themeToggle.textContent = isDark ? "☀️" : "🌙";
-});
