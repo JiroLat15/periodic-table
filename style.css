@@ -89,14 +89,14 @@ td {
   background: #ffffff;
   border: 3px solid;
   box-sizing: border-box;
-  font-size: clamp(18px, 1.5vw, 20px);
+  font-size: clamp(14px, 1.5vw, 14px);
   font-weight: bold;
-  height: 80px !important;
-  min-width: 80px !important;
+  height: 60px !important;
+  min-width: 60px !important;
   position: relative;
   text-align: center;
   transition: all 0.2s;
-  width: 80px !important;
+  width: 60px !important;
 }
 
 /* ========== SPACER CELLS ========== */
