@@ -11,7 +11,7 @@ body.light-mode .post-transition-metal { border-color: #5f3dc4; }
 body.light-mode .metalloid { border-color: #087f5b; }
 body.light-mode .reactive-nonmetal { border-color: #0ca678; }
 body.light-mode .noble-gas { border-color: #228be6; }
-body.light-mode .lanthanide { border-color: #1c7ed6; }
+body.light-mode .lanthanide { border-color: #8e7aca; }
 body.light-mode .actinide { border-color: #e64980; }
 body.light-mode .unknown-properties { border-color: #868e96; }
 
@@ -26,7 +26,7 @@ body.dark-mode .post-transition-metal { border-color: #d0bfff; }
 body.dark-mode .metalloid { border-color: #69db7c; }
 body.dark-mode .reactive-nonmetal { border-color: #b2f2bb; }
 body.dark-mode .noble-gas { border-color: #a5d8ff; }
-body.dark-mode .lanthanide { border-color: #d0ebff; }
+body.dark-mode .lanthanide { border-color: #e0c6ff; }
 body.dark-mode .actinide { border-color: #ffc9de; }
 body.dark-mode .unknown-properties { border-color: #dee2e6; }
 
@@ -178,7 +178,7 @@ td {
 }
 
 .lanthanide {
-  background-color: #74c0fc; /* baby blue */
+  background-color: #b197fc; /* baby blue */
 }
 
 .actinide {
