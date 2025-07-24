@@ -73,10 +73,18 @@ for (let rowIndex = 0; rowIndex < table.length; rowIndex++) {
         const td = document.createElement("td");
 
         if (cell) {
+            td.classList.add("element-cell");
             td.innerHTML = `
-                <div class="atomic-number">${cell.number}</div>
-                <div class="symbol">${cell.symbol}</div>
-                <div class="element-name">${cell.name}</div>
+                <div class="element-content">
+                    <div class="left-info">
+                        <div class="atomic-number">${cell.number}</div>
+                        <div class="symbol">${cell.symbol}</div>
+                        <div class="element-name">${cell.name}</div>
+                    </div>
+                    <div class="energy-levels">
+                        ${(cell.energyLevels || []).map(level => `<div>${level}</div>`).join("")}
+                    </div>
+                </div>
             `;
 
             if (cell.category) {
