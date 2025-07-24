@@ -133,3 +133,4 @@ const elements = [
   { number: 117, symbol: "Ts", name: "Tennessine",    group: 17,period: 7, category: "unknown-properties",                  energyLevels: [2,8,18,32,32,18,7] },
   { number: 118, symbol: "Og", name: "Oganesson",     group: 18,period: 7, category: "unknown-properties",                  energyLevels: [2,8,18,32,32,18,8] },
 ];
+
