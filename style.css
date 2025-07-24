@@ -84,7 +84,7 @@ td.element-cell:hover {
   transition: transform 0.2s ease;
   font-size: clamp(8px, 1vw, 8px);
   z-index: 2;
-  transform: scale(2);
+  transform: scale(1.8);
 }
 
 td.element-cell:hover .element-content {
@@ -103,22 +103,22 @@ td.element-cell:hover .left-info {
 td.element-cell:hover .energy-levels {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  font-size: 0.6em;
+  gap: 0.2px;
+  font-size: 0.7em;
   font-weight: normal;
   text-align: right;
-  top: 5px;
-  right: 4px;
+  top: 2.5px;
+  right: 2px;
   color: black;
   background-color: transparent;
-  border-radius: 4px;
+  border-radius: 0px;
 }
 
 td.element-cell:hover .symbol {
   font-size: 1.5em;
   position: static;
   transform: none;
-  padding-left: 4px;
+  padding-left: 2px;
 }
 
 td.element-cell:hover .element-name {
@@ -126,16 +126,16 @@ td.element-cell:hover .element-name {
   position: static;
   text-align: left;
   width: auto;
-  padding-left: 4px;
+  padding-left: 2px;
 }
 
 /* ========== ELEMENT CONTENT STYLES ========== */
 .atomic-number {
-  font-size: 0.6em;
+  font-size: 1em;
   font-weight: bolder;
   position: absolute;
-  top: 5px;
-  left: 4px;
+  top: 1px;
+  left: 2px;
 }
 
 .energy-levels {
