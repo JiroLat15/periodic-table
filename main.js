@@ -104,4 +104,5 @@ for (let rowIndex = 0; rowIndex < table.length; rowIndex++) {
 
 tableContainer.appendChild(htmlTable);
 
+
 // Add this at the bottom of your main.js or inside a DOMContentLoaded event
