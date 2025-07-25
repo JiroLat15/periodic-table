@@ -1,3 +1,7 @@
+html {
+  margin-top: 60px;
+}
+
 /* NAVBAR STYLING */
 .navbar {
   background-color: rgb(67, 67, 112);
@@ -46,12 +50,27 @@
   font-size: 1.5rem;
 }
 
+/* === Button Design===  */
+.filter-btn.active {
+  background-color: #0ea5e9; /* Example blue, change as you like */
+  color: white;
+  border: 2px solid #0284c7;
+  font-weight: bold;
+}
+
+/* === Cell Dim Style (upon Button Click) === */
+.element-cell.dimmed {
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
 /* ========== GENERAL TABLE STYLES ========== */
 
 .periodic-table {
   border-collapse: separate; /* Allows gaps between cells */
   border-spacing: 6px; /* Space between cells */
-  margin: 80px auto 10px;
+  margin: 100px auto 100px;
+  padding: 0 100px;
   width: auto;
 }
 
