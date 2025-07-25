@@ -106,7 +106,7 @@ for (let rowIndex = 0; rowIndex < table.length; rowIndex++) {
 
 tableContainer.appendChild(htmlTable);
 
-// === ALIAS MAP FOR BROAD CATEGORIES ===
+// === CATEGORY ALIASES ===
 const categoryAliases = {
   metals: [
     "alkali-metal",
@@ -122,110 +122,113 @@ const categoryAliases = {
   ]
 };
 
-// === DOM SELECTORS ===
-const filterButtons = document.querySelectorAll('.filter-btn');
-const allCells = document.querySelectorAll('.element-cell');
+// === ACTIVE STATE TRACKING ===
+const activeCategories = new Set();
+const activeMainCategories = new Set();
 
-// === MAIN EVENT LISTENER ===
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const category = button.dataset.category;
-    const isActive = button.classList.contains("active");
+// === ELEMENT VISIBILITY HANDLING ===
+function updateElementVisibility() {
+  const cells = document.querySelectorAll(".element-cell");
 
-    // === TOGGLE THE BUTTON ITSELF ===
-    button.classList.toggle("active");
+  if (activeCategories.size === 0) {
+    cells.forEach(cell => cell.classList.remove("dimmed"));
+    return;
+  }
 
-    // === HANDLE MAIN CATEGORIES ===
-    if (category === "metals" || category === "nonmetals") {
-      const thisSubs = categoryAliases[category];
-      const otherMain = category === "metals" ? "nonmetals" : "metals";
-      const otherSubs = categoryAliases[otherMain];
-
-      if (!isActive) {
-        // Activate all subcategory buttons of this group
-        filterButtons.forEach(btn => {
-          if (thisSubs.includes(btn.dataset.category)) {
-            btn.classList.add("active");
-          }
-        });
-
-        // Deactivate other main + their subcategories
-        filterButtons.forEach(btn => {
-          if (
-            btn.dataset.category === otherMain ||
-            otherSubs.includes(btn.dataset.category)
-          ) {
-            btn.classList.remove("active");
-          }
-        });
-
-        // Turn off metalloids
-        filterButtons.forEach(btn => {
-          if (btn.dataset.category === "metalloid") {
-            btn.classList.remove("active");
-          }
-        });
-      } else {
-        // If we're untoggling the main button, untoggle all its subs
-        filterButtons.forEach(btn => {
-          if (thisSubs.includes(btn.dataset.category)) {
-            btn.classList.remove("active");
-          }
-        });
-      }
+  cells.forEach(cell => {
+    const group = cell.dataset.group;
+    if (activeCategories.has(group)) {
+      cell.classList.remove("dimmed");
+    } else {
+      cell.classList.add("dimmed");
     }
-
-    // === HANDLE METALLOIDS ===
-    else if (category === "metalloid") {
-      if (!isActive) {
-        // Untoggle main buttons (but not their subcategories)
-        filterButtons.forEach(btn => {
-          if (btn.dataset.category === "metals" || btn.dataset.category === "nonmetals") {
-            btn.classList.remove("active");
-          }
-        });
-      }
-    }
-
-    // === HANDLE SUBCATEGORIES ===
-    else {
-      if (!isActive) {
-        // Untoggle parent main category if it's active
-        for (const [mainCat, subList] of Object.entries(categoryAliases)) {
-          if (subList.includes(category)) {
-            filterButtons.forEach(btn => {
-              if (btn.dataset.category === mainCat) {
-                btn.classList.remove("active");
-              }
-            });
-          }
-        }
-      }
-    }
-
-    // === GATHER ALL ACTIVE CATEGORIES ===
-    const activeCategories = Array.from(filterButtons)
-      .filter(btn => btn.classList.contains("active"))
-      .map(btn => {
-        const cat = btn.dataset.category;
-        return categoryAliases[cat] || [cat]; // map metals -> [...], etc.
-      })
-      .flat();
-
-    // === APPLY DIMMING BASED ON ACTIVE FILTERS ===
-    allCells.forEach(cell => {
-      const group = cell.dataset.group;
-      if (activeCategories.length === 0) {
-        // Nothing selected — show all
-        cell.classList.remove("dimmed");
-      } else if (activeCategories.includes(group)) {
-        // Match found — highlight
-        cell.classList.remove("dimmed");
-      } else {
-        // Not in active set — dim
-        cell.classList.add("dimmed");
-      }
-    });
   });
-});
+}
 
+// === BUTTON CLICK HANDLERS ===
+
+// Subcategory button click
+function subcategoryClick(category) {
+  const button = document.querySelector(`[data-category="${category}"]`);
+  const isActive = activeCategories.has(category);
+
+  if (isActive) {
+    activeCategories.delete(category);
+    button.classList.remove("active");
+  } else {
+    activeCategories.add(category);
+    button.classList.add("active");
+  }
+
+  for (const [main, subs] of Object.entries(categoryAliases)) {
+    const allActive = subs.every(sub => activeCategories.has(sub));
+    const mainButton = document.querySelector(`[data-category="${main}"]`);
+
+    if (allActive) {
+      activeMainCategories.add(main);
+      mainButton.classList.add("active");
+    } else {
+      activeMainCategories.delete(main);
+      mainButton.classList.remove("active");
+    }
+  }
+
+  updateElementVisibility();
+}
+
+// Main category button click
+function mainCategoryClick(main) {
+  const button = document.querySelector(`[data-category="${main}"]`);
+  const subcategories = categoryAliases[main];
+  const isActive = activeMainCategories.has(main);
+
+  if (isActive) {
+    activeMainCategories.delete(main);
+    button.classList.remove("active");
+
+    subcategories.forEach(sub => {
+      activeCategories.delete(sub);
+      document.querySelector(`[data-category="${sub}"]`).classList.remove("active");
+    });
+  } else {
+    activeMainCategories.add(main);
+    button.classList.add("active");
+
+    subcategories.forEach(sub => {
+      activeCategories.add(sub);
+      document.querySelector(`[data-category="${sub}"]`).classList.add("active");
+    });
+  }
+
+  updateElementVisibility();
+}
+
+
+// Metalloids button click (independent)
+function toggleMetalloids() {
+  const btn = document.querySelector(`[data-category="metalloid"]`);
+  const isActive = activeCategories.has("metalloid");
+
+  if (isActive) {
+    activeCategories.delete("metalloid");
+    btn.classList.remove("active");
+  } else {
+    activeCategories.add("metalloid");
+    btn.classList.add("active");
+  }
+
+  updateElementVisibility();
+}
+
+// === EVENT LISTENER BINDING ===
+document.querySelectorAll("[data-category]").forEach(button => {
+  const category = button.dataset.category;
+
+  if (category === "metalloid") {
+    button.addEventListener("click", () => toggleMetalloids());
+  } else if (categoryAliases[category]) {
+    button.addEventListener("click", () => mainCategoryClick(category));
+  } else {
+    button.addEventListener("click", () => subcategoryClick(category));
+  }
+});
